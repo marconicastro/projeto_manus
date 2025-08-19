@@ -14,7 +14,7 @@ interface CheckoutRequest {
 }
 
 const plans = {
-  ebook: { price: 86.00, name: 'Ebook Completo' },
+ebook: { price: 39.90, name: 'Ebook Completo' },
   mentoria: { price: 299.90, name: 'Mentoria Personalizada' },
   ebook_discount: { price: 69.90, name: 'Ebook com Desconto' }
 }

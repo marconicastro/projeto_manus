@@ -316,3 +316,61 @@ Se você precisar de ajuda ou tiver dúvidas:
 ---
 
 **Desenvolvido com ❤️ para produtores de maracujá brasileiros**
+
+
+## Modificações Recentes (Agosto de 2025)
+
+Este projeto foi atualizado para incluir a implementação de pixels de rastreamento e a correção de valores, conforme as seguintes especificações:
+
+### 1. Implementação dos Pixels (Facebook e TikTok)
+
+**Objetivo:** Rastrear o comportamento dos usuários na landing page para otimização de campanhas de marketing e análise de leads.
+
+**Pixels Implementados:**
+*   **Facebook Pixel ID:** 1403975024017865
+*   **TikTok Pixel ID:** D2HMSD3C77U9B02M0HMG
+
+**Eventos Rastreáveis na Landing Page:**
+
+Os seguintes eventos são rastreados para ambos os pixels (Facebook e TikTok) na landing page:
+
+*   **PageView (Visualização de Página):** Disparado sempre que a página é carregada. Essencial para medir o tráfego e o alcance da página.
+*   **ViewContent (Visualização de Conteúdo):** Disparado quando o conteúdo principal da página (e-book) é visualizado. Ajuda a identificar o interesse no produto.
+*   **AddToCart (Adicionar ao Carrinho):** Disparado quando o usuário clica nos botões de checkout (botões com classes `bg-amber-500` ou `from-red-600`). Indica uma intenção de compra.
+*   **Lead (Lead):** Disparado quando o usuário clica nos botões de WhatsApp (`a[href*="wa.me"]` ou `button[onclick*="whatsapp"]`). Essencial para rastrear leads gerados via contato direto.
+
+**Observação Importante sobre Eventos de Compra/Checkout:**
+
+Os eventos de `InitiateCheckout` (Iniciar Checkout) e `Purchase` (Compra) **NÃO** estão sendo rastreados diretamente nesta landing page. Conforme sua solicitação, a integração e o rastreamento desses eventos devem ser configurados diretamente na plataforma da Hotmart. Esta abordagem garante maior precisão na coleta de dados de transações, uma vez que a Hotmart tem controle total sobre o fluxo de pagamento.
+
+### 2. Atualização de Valores
+
+**Objetivo:** Ajustar o preço do e-book e outros valores mencionados na página para R$ 39,90.
+
+**Alterações Realizadas:**
+
+Todos os valores de R$ 86,00 foram atualizados para R$ 39,90, incluindo:
+
+*   Preço do e-book na seção principal da página.
+*   Preço do e-book na barra flutuante mobile.
+*   Valor do e-book no backend (arquivo `src/app/api/checkout/route.ts`) para garantir consistência em futuras integrações de pagamento, caso necessário.
+
+### 3. Estrutura do Projeto e Arquivos Modificados
+
+As principais modificações foram realizadas nos seguintes arquivos:
+
+*   `src/components/MetaPixel.tsx`: Contém a lógica de inicialização dos pixels do Facebook e TikTok.
+*   `src/components/meta-pixel-events.tsx`: Contém as funções para disparar os eventos específicos (PageView, ViewContent, AddToCart, Lead).
+*   `src/app/page.tsx`: Arquivo principal da landing page, onde os valores foram atualizados e os eventos são chamados em resposta às interações do usuário.
+*   `src/app/api/checkout/route.ts`: Arquivo de backend onde o valor do e-book foi atualizado.
+
+### 4. Como Testar a Implementação
+
+Para verificar a correta instalação e disparo dos pixels, siga os passos:
+
+1.  **Acesse a Landing Page:** Utilize o link fornecido para acessar a landing page em seu navegador.
+2.  **Utilize Extensões de Navegador:**
+    *   **Facebook Pixel Helper:** Instale esta extensão no seu navegador (disponível para Chrome). Ela indicará se o pixel do Facebook está ativo e quais eventos estão sendo disparados.
+    *   **TikTok Pixel Helper:** Instale esta extensão no seu navegador (disponível para Chrome). Ela fará o mesmo para o pixel do TikTok.
+3.  **Interaja com a Página:** Navegue pela página, clique nos botões de compra e WhatsApp para testar o disparo dos eventos.
+

@@ -10,40 +10,69 @@ declare global {
 
 export function MetaPixelEvents() {
   useEffect(() => {
-    // Garantir que o fbq esteja disponível
     if (typeof window !== 'undefined' && window.fbq) {
-      // Evento de visualização de conteúdo
+      // Evento de visualização de conteúdo do Facebook
       window.fbq('track', 'ViewContent', {
         content_name: 'Guia Prático de Controle do Trips no Maracujá',
         content_category: 'E-book Agrícola',
         content_type: 'product',
-        value: 86.00,
+        value: 39.90,
         currency: 'BRL'
       })
+
+      // Evento de visualização de conteúdo do TikTok
+      if (window.ttq) {
+        window.ttq.track('ViewContent', {
+          content_name: 'Guia Prático de Controle do Trips no Maracujá',
+          content_category: 'E-book Agrícola',
+          content_type: 'product',
+          value: 39.90,
+          currency: 'BRL'
+        })
+      }
 
       // Evento de lead quando o usuário demonstra interesse
       const handleLeadEvent = () => {
         window.fbq('track', 'Lead', {
           content_name: 'Guia Prático de Controle do Trips no Maracujá',
         })
+        if (window.ttq) {
+          window.ttq.track('Lead', {
+            content_name: 'Guia Prático de Controle do Trips no Maracujá',
+          })
+        }
       }
 
       // Evento de adição ao carrinho
       const handleAddToCart = () => {
         window.fbq('track', 'AddToCart', {
           content_name: 'Guia Prático de Controle do Trips no Maracujá',
-          value: 86.00,
+          value: 39.90,
           currency: 'BRL'
         })
+        if (window.ttq) {
+          window.ttq.track('AddToCart', {
+            content_name: 'Guia Prático de Controle do Trips no Maracujá',
+            value: 39.90,
+            currency: 'BRL'
+          })
+        }
       }
 
       // Evento de compra
       const handlePurchase = () => {
         window.fbq('track', 'Purchase', {
           content_name: 'Guia Prático de Controle do Trips no Maracujá',
-          value: 86.00,
+          value: 39.90,
           currency: 'BRL'
         })
+        if (window.ttq) {
+          window.ttq.track('Purchase', {
+            content_name: 'Guia Prático de Controle do Trips no Maracujá',
+            value: 39.90,
+            currency: 'BRL'
+          })
+        }
       }
 
       // Adicionar listeners aos botões de checkout
@@ -78,15 +107,11 @@ export const trackMetaPixelEvent = (eventName: string, params?: Record<string, a
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('track', eventName, params)
   }
-}
+  if (typeof window !== 'undefined' && window.ttq) {
+    window.ttq.track(eventName, params)
+  }
 
-export const trackCheckout = () => {
-  trackMetaPixelEvent('InitiateCheckout', {
-    content_name: 'Guia Prático de Controle do Trips no Maracujá',
-    value: 86.00,
-    currency: 'BRL'
-  })
-}
+
 
 export const trackPurchase = (value: number = 86.00) => {
   trackMetaPixelEvent('Purchase', {

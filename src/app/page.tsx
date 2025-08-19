@@ -195,8 +195,6 @@ export default function Home() {
 
   return (
     <>
-
-
       {/* Barra Flutuante Mobile */}
       {mobileView && (
         <div className="fixed bottom-0 left-0 right-0 bg-green-700 text-white p-4 z-40 shadow-2xl">
@@ -214,17 +212,6 @@ export default function Home() {
           </div>
         </div>
       )}
-
-      {/* Visitantes Online - Versão Inteligente */}
-      <div 
-        className={`fixed top-20 right-4 bg-red-600 text-white px-3 py-2 rounded-full text-sm font-bold z-30 shadow-lg hover:bg-red-700 transition-all duration-300 cursor-pointer ${
-          visitorCardMinimized ? 'scale-75 opacity-80' : 'scale-100 opacity-100'
-        }`}
-        onClick={() => setVisitorCardMinimized(!visitorCardMinimized)}
-        title={visitorCardMinimized ? "Clique para expandir" : "Prova social em tempo real - Clique para minimizar"}
-      >
-        {visitorCardMinimized ? '👁️' : `👁️ ${visitorsCount} pessoas online`}
-      </div>
 
       <div className="min-h-screen bg-gradient-to-b from-amber-50 to-green-50">
         {/* Hero Section com Urgência - Mobile Optimized */}
@@ -496,7 +483,7 @@ export default function Home() {
                 🚀 SIM! QUERO MEU E-BOOK AGORA
               </Button>
               <div className="bg-white/20 backdrop-blur-sm rounded-full px-6 sm:px-8 py-3 sm:py-4">
-                <span className="text-2xl sm:text-3xl font-bold">R$ 86,00</span>
+                <span className="text-2xl sm:text-3xl font-bold">R$ 39,90</span>
                 <span className="text-sm line-through ml-2">R$ 147,00</span>
               </div>
             </div>
