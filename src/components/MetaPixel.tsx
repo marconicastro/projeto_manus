@@ -64,6 +64,9 @@ export default function MetaPixel() {
     if (typeof window !== 'undefined' && window.fbq) {
       window.fbq('track', 'PageView')
     }
+    if (typeof window !== 'undefined' && window.ttq) {
+      window.ttq.page()
+    }
   }, [pathname, searchParams])
 
   return null
