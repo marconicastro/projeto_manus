@@ -1,4 +1,26 @@
-import type { Metadata } from "next";
+import "./globals.css";
+import { ReactNode } from "react";
+import Script from "next/script";
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="pt">
+      <head>
+        {/* outros elementos do head */}
+      </head>
+      <body>
+        <Script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          strategy="afterInteractive"
+          data-utmify-prevent-subids=""
+          async
+          defer
+        />
+        {children}
+      </body>
+    </html>
+  );
+}import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
