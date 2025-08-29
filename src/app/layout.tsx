@@ -19,7 +19,8 @@ const geistMono = Geist_Mono({
 // Metadata
 export const metadata: Metadata = {
   title: "Guia Prático de Controle do Trips no Maracujá",
-  description: "Domine o controle do trips no maracujá com técnicas validadas pela Embrapa. Aprenda o Manejo Integrado de Pragas (MIP) e aumente sua produtividade.",
+  description:
+    "Domine o controle do trips no maracujá com técnicas validadas pela Embrapa. Aprenda o Manejo Integrado de Pragas (MIP) e aumente sua produtividade.",
   keywords: [
     "trips maracujá",
     "controle de pragas",
@@ -32,7 +33,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Especialista em Controle de Trips" }],
   openGraph: {
     title: "Guia Prático de Controle do Trips no Maracujá",
-    description: "Aprenda a controlar o trips no maracujá com técnicas validadas pela Embrapa. Aumente sua produtividade!",
+    description:
+      "Aprenda a controlar o trips no maracujá com técnicas validadas pela Embrapa. Aumente sua produtividade!",
     url: "https://seusite.com",
     siteName: "Controle de Trips no Maracujá",
     type: "website",
@@ -40,7 +42,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Guia Prático de Controle do Trips no Maracujá",
-    description: "Aprenda a controlar o trips no maracujá com técnicas validadas pela Embrapa.",
+    description:
+      "Aprenda a controlar o trips no maracujá com técnicas validadas pela Embrapa.",
   },
 };
 
@@ -57,7 +60,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
         {/* outros elementos do head */}
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+      >
         <Suspense fallback={null}>
           <MetaPixel />
         </Suspense>
@@ -67,3 +72,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+
