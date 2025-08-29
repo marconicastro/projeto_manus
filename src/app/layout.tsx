@@ -1,46 +1,34 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
+import MetaPixel from "@/components/MetaPixel";
 
-// Se você tiver alguma configuração de fonte, pode adicionar aqui
-
-export default function RootLayout({ children }: { children: ReactNode }) {
-  return (
-    <html lang="pt">
-      <head>
-        {/* outros elementos do head */}
-      </head>
-      <body>
-        <Script
-          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-          strategy="afterInteractive"
-          data-utmify-prevent-subids=""
-          async
-          defer
-        />
-        <Toaster />
-        {children}
-      </body>
-    </html>
-  );
-}
+// Fontes Geist
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
+// Metadata
 export const metadata: Metadata = {
   title: "Guia Prático de Controle do Trips no Maracujá",
   description: "Domine o controle do trips no maracujá com técnicas validadas pela Embrapa. Aprenda o Manejo Integrado de Pragas (MIP) e aumente sua produtividade.",
-  keywords: ["trips maracujá", "controle de pragas", "MIP", "Embrapa", "maracujá", "agricultura", "pragas do maracujazeiro"],
+  keywords: [
+    "trips maracujá",
+    "controle de pragas",
+    "MIP",
+    "Embrapa",
+    "maracujá",
+    "agricultura",
+    "pragas do maracujazeiro",
+  ],
   authors: [{ name: "Especialista em Controle de Trips" }],
   openGraph: {
     title: "Guia Prático de Controle do Trips no Maracujá",
@@ -56,16 +44,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
+      <head>
+        <Script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          strategy="afterInteractive"
+          data-utmify-prevent-subids=""
+          async
+          defer
+        />
+        {/* outros elementos do head */}
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}>
         <Suspense fallback={null}>
           <MetaPixel />
         </Suspense>
@@ -75,5 +67,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
