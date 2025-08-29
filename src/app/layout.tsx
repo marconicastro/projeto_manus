@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ReactNode } from "react";
+import Script from "next/script";
 import { Toaster } from "@/components/ui/toaster";
-import MetaPixel from "@/components/MetaPixel";
-import { Suspense } from 'react';
+
+// Se você tiver alguma configuração de fonte, pode adicionar aqui
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt">
